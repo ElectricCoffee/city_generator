@@ -1,0 +1,10 @@
+[package]
+name = "city_generator"
+version = "0.1.0"
+authors = ["coffee"]
+
+[dependencies]
+serde = "1.0.60"
+serde_json = "1.0.17"
+serde_derive = "1.0.60"
+rand = "0.5.0"

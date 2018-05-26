@@ -1,0 +1,18 @@
+{ "prefixes": [ "aber", "ast", "auch", "auchen", "auchin", "ach", "auchter"
+              , "bal", "balla", "bally", "ball", "brad", "bre", "caer", "car"
+              , "cul", "cwm", "cum", "dal", "din", "dinas", "dol", "drum", "dun"
+              , "dum", "don", "doune", "fin", "inver", "inner", "kil", "kin", "kyle"
+              , "kyles", "lan", "llan", "lhan", "lang", "lin", "llyn", "mynydd", "nan"
+              , "nans", "nant", "nor", "pen", "pit", "pol", "pont", "porth", "shep"
+              , "ship", "stan", "strath", "sud", "sut", "tre", "tra", "tilly"
+              , "tullie", "tulloch", "wes", "win"
+              ]
+, "suffixes": [ "ay", "y", "ey", "bost", "bury", "borough", "brough", "burgh"
+              , "by", "bie", "carden", "caster", "chester", "cester", "ceter"
+              , "cott", "cot", "dale", "dean", "den", "don", "dubh", "dow", "dhu"
+              , "duff", "field", "firth", "frith", "ham", "hay", "hays", "hayes"
+              , "ing", "keth", "cheth", "lea", "ley", "leigh", "mouth", "ness"
+              , "pool", "port", "shaw", "stead", "ster", "thwaite", "twatt", "toft"
+              , "wick", "wich", "wych", "wyke", "worth", "worthy", "wardine"
+              ]
+}
