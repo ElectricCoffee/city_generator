@@ -22,26 +22,23 @@ fn read_file(path: &str) -> std::io::Result<String> {
     Ok(result)
 }
 
-macro_rules! try_print {
-    ($e:expr) => ({
-        match $e {
-            Ok(k) => k,
-            Err(err) => {
-                eprintln!("{}", err);
-                return;
-            }
-        }
-    })
+fn run() -> std::result::Result<String, Error> {
+    let args: Vec<String> = env::args().collect();
+    let path = args.get(1).ok_or(ParsingError::NoArguments)?;
+    let file = read_file(path)?;
+    let data = serde_json::from_str::<Data>(&file)?;
+    let result = data.generate_amount(20usize)?;
+
+    let mut string = String::new();
+    for s in result.iter() {
+        string += &format!("{}\n", s);
+    }
+    Ok(string)
 }
 
 fn main() {
-    let args: Vec<String> = env::args().collect();
-    if let Some(path) = args.get(1) {
-        let result = try_print!{read_file(path)};
-        let data: Data = try_print!{serde_json::from_str(&result)};
-        let town = data.generate_random().unwrap();
-        println!("{}", town);
-    } else {
-        println!("Error: Please supply a file path to a .json file");
+    match run() {
+        Ok(result) => println!("{}", result),
+        Err(error) => eprintln!("{:?}", error),
     }
 }
