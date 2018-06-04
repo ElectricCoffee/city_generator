@@ -39,6 +39,6 @@ fn run() -> std::result::Result<String, Error> {
 fn main() {
     match run() {
         Ok(result) => println!("{}", result),
-        Err(error) => eprintln!("{:?}", error),
+        Err(error) => eprintln!("{}", error),
     }
 }
