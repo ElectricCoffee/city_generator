@@ -10,11 +10,14 @@ extern crate failure;
 #[macro_use]
 extern crate failure_derive;
 use failure::Error;
-
+// Std
 use std::env;
 use std::fs::File;
 use std::io::prelude::*;
 
+/// Reads a file as given by the input path.
+///
+/// Returns its contents as a `String`.
 fn read_file(path: &str) -> std::io::Result<String> {
     let mut file = File::open(path)?;
     let mut result = String::new();
@@ -22,6 +25,10 @@ fn read_file(path: &str) -> std::io::Result<String> {
     Ok(result)
 }
 
+/// Runs the whole thing and returns the result.
+///
+/// Returns a `String` of generated names if it succeeds,
+/// or a `failure::Error` if it fails.
 fn run() -> std::result::Result<String, Error> {
     let args: Vec<String> = env::args().collect();
     let path = args.get(1).ok_or(ParsingError::NoArguments)?;
