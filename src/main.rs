@@ -1,44 +1,19 @@
+mod data;
+use data::*;
+// SerDe
 #[macro_use]
 extern crate serde_derive;
 extern crate serde;
 extern crate serde_json;
-extern crate rand;
-use rand::Rng; // extension trait
+// Failure
+extern crate failure;
+#[macro_use]
+extern crate failure_derive;
+use failure::Error;
+
 use std::env;
 use std::fs::File;
 use std::io::prelude::*;
-
-#[derive(Debug)]
-enum ParsingError {
-    PrefixEmptyError,
-    SuffixEmptyError,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-struct Data {
-    prefixes: Vec<String>,
-    suffixes: Vec<String>,
-}
-
-impl Data {
-    fn generate_random(&self) -> Result<String, ParsingError> {
-        use ParsingError::*;
-        let mut random = rand::thread_rng();
-        let prefix = random.choose(&self.prefixes).ok_or(PrefixEmptyError)?;
-        let suffix = random.choose(&self.suffixes).ok_or(SuffixEmptyError)?;
-        Ok(prefix.clone() + &suffix)
-    }
-
-    fn generate_all(&self) -> Vec<String> {
-        let mut results = Vec::new();
-        for prefix in self.prefixes.iter() {
-            for suffix in self.suffixes.iter() {
-                results.push(prefix.clone() + &suffix);
-            }
-        }
-        results
-    }
-}
 
 fn read_file(path: &str) -> std::io::Result<String> {
     let mut file = File::open(path)?;
